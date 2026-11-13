@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гімназія № 30 Хмельницької міської ради | Офіційний сайт</title>
+    
+    <!-- Підключення сучасного шрифту Manrope та Inter з Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Підключення Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            DEFAULT: '#163A2E',
+                            light: '#1E4D3D',
+                            dark: '#0E261E',
+                            50: '#F0F5F3',
+                            100: '#D9E6E1',
+                        },
+                        gold: {
+                            DEFAULT: '#E2B857',
+                            light: '#EDD089',
+                            dark: '#C59B3B',
+                            50: '#FCF8EE',
+                        },
+                        offwhite: '#F8F9F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Іконки Lucide для чистого сучасного інтерфейсу -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Декоративний академічний патерн для головного банера */
+        .hero-pattern {
+            background-color: #163A2E;
+            background-image: radial-gradient(rgba(226, 184, 87, 0.12) 1px, transparent 1px), 
+                              radial-gradient(rgba(226, 184, 87, 0.08) 1px, #163A2E 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+        /* Плавні переходи для модальних вікон */
+        .modal-backdrop {
+            transition: opacity 0.25s ease;
+        }
+        .modal-panel {
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+    </style>
+</head>
+<body class="bg-offwhite text-slate-800 font-sans antialiased selection:bg-gold selection:text-forest">
+
+    <!-- =====================================================================
+         1. ВЕРХНЯ ІНФОРМАЦІЙНА ПАНЕЛЬ (TOP BAR)
+    ====================================================================== -->
+    <div class="bg-forest-dark text-white/90 text-xs sm:text-sm border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+                <span class="inline-flex items-center gap-1.5">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold"></i>
+                    <span>м. Хмельницький, вул. Озерна (мікрорайон Озерна)</span>
+                </span>
+                <a href="tel:+380382000000" class="inline-flex items-center gap-1.5 hover:text-gold transition">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-gold"></i>
+                    <span>(0382) 70-30-30</span>
+                </a>
+                <a href="mailto:gymnasium30@khm.ukr.education" class="hidden md:inline-flex items-center gap-1.5 hover:text-gold transition">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-gold"></i>
+                    <span>gymnasium30@khm.ukr.education</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-3 ml-auto sm:ml-0">
+                <button onclick="openDiaryModal()" class="inline-flex items-center gap-1.5 bg-gold text-forest hover:bg-gold-light font-heading font-bold px-3.5 py-1 rounded-full transition duration-200 cursor-pointer shadow-sm">
+                    <i data-lucide="book-open-check" class="w-3.5 h-3.5"></i>
+                    <span>Е-щоденник</span>
+                </button>
+                <button onclick="openContactModal()" class="inline-flex items-center gap-1.5 bg-gold/15 hover:bg-gold text-gold hover:text-forest font-medium px-3 py-1 rounded-full border border-gold/40 transition duration-200 cursor-pointer">
+                    <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                    <span class="hidden sm:inline">Зворотний зв'язок</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         2. ГОЛОВНА НАВІГАЦІЯ (STICKY HEADER З ОНОВЛЕНИМ ГЕРБОМ)
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Логотип та офіційна назва -->
+                <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
+                    <!-- Векторний SVG-герб Гімназії № 30 (Смарагдово-хвойний + М'яке золото, без веж) -->
+                    <div class="w-12 h-14 sm:w-14 sm:h-16 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
+                            <!-- Основний щит -->
+                            <path d="M12 16C38 8 82 8 108 16V68C108 102 82 122 60 132C38 122 12 102 12 68V16Z" fill="#163A2E" stroke="#E2B857" stroke-width="4.5"/>
+                            <!-- Права половина щита для легкого геральдичного об'єму -->
+                            <path d="M60 10C83 10 108 16 108 16V68C108 102 82 122 60 132V10Z" fill="#112E24" fill-opacity="0.45"/>
+                            <!-- Внутрішня золота рамка -->
+                            <path d="M18 21C40 14 80 14 102 21V67C102 97 79 115 60 124C41 115 18 97 18 67V21Z" stroke="#E2B857" stroke-width="1.5" stroke-opacity="0.7"/>
+                            
+                            <!-- Внутрішній щиток м. Хмельницького (БЕЗ веж, три перехрещені стріли) -->
+                            <path d="M47 26H73V41C73 49 66 54 60 57C54 54 47 49 47 41V26Z" fill="#163A2E" stroke="#E2B857" stroke-width="2"/>
+                            <!-- Вертикальна стріла вістрям вниз -->
+                            <line x1="60" y1="30" x2="60" y2="51" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M57.5 48L60 52L62.5 48" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Дві діагональні стріли вістрям вгору -->
+                            <line x1="51" y1="49" x2="69" y2="31" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M65.5 31H69V34.5" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="69" y1="49" x2="51" y2="31" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M54.5 31H51V34.5" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+                            <!-- Лівий колосок -->
+                            <path d="M36 96C26 84 24 68 28 52" stroke="#E2B857" stroke-width="2" stroke-linecap="round"/>
+                            <ellipse cx="25" cy="60" rx="2.5" ry="5" transform="rotate(-25 25 60)" fill="#E2B857"/>
+                            <ellipse cx="24" cy="70" rx="2.5" ry="5" transform="rotate(-35 24 70)" fill="#E2B857"/>
+                            <ellipse cx="26" cy="80" rx="2.5" ry="5" transform="rotate(-45 26 80)" fill="#E2B857"/>
+                            <ellipse cx="32" cy="57" rx="2.5" ry="5" transform="rotate(20 32 57)" fill="#E2B857"/>
+                            <ellipse cx="31" cy="67" rx="2.5" ry="5" transform="rotate(15 31 67)" fill="#E2B857"/>
+                            <ellipse cx="32" cy="77" rx="2.5" ry="5" transform="rotate(10 32 77)" fill="#E2B857"/>
+
+                            <!-- Правий колосок -->
+                            <path d="M84 96C94 84 96 68 92 52" stroke="#E2B857" stroke-width="2" stroke-linecap="round"/>
+                            <ellipse cx="95" cy="60" rx="2.5" ry="5" transform="rotate(25 95 60)" fill="#E2B857"/>
+                            <ellipse cx="96" cy="70" rx="2.5" ry="5" transform="rotate(35 96 70)" fill="#E2B857"/>
+                            <ellipse cx="94" cy="80" rx="2.5" ry="5" transform="rotate(45 94 80)" fill="#E2B857"/>
+                            <ellipse cx="88" cy="57" rx="2.5" ry="5" transform="rotate(-20 88 57)" fill="#E2B857"/>
+                            <ellipse cx="89" cy="67" rx="2.5" ry="5" transform="rotate(-15 89 67)" fill="#E2B857"/>
+                            <ellipse cx="88" cy="77" rx="2.5" ry="5" transform="rotate(-10 88 77)" fill="#E2B857"/>
+
+                            <!-- Розгорнута книга в центрі -->
+                            <path d="M36 86C44 82 54 83 60 88C66 83 76 82 84 86L81 64C74 61 65 62 60 66C55 62 46 61 39 64L36 86Z" fill="#F8F9F5" stroke="#E2B857" stroke-width="2.5" stroke-linejoin="round"/>
+                            <line x1="60" y1="66" x2="60" y2="88" stroke="#163A2E" stroke-width="1.8"/>
+                            <!-- Рядки на сторінках -->
+                            <line x1="43" y1="69" x2="55" y2="70" stroke="#163A2E" stroke-width="1.4" stroke-linecap="round"/>
+                            <line x1="43" y1="74" x2="55" y2="75" stroke="#E2B857" stroke-width="1.4" stroke-linecap="round"/>
+                            <line x1="42" y1="79" x2="55" y2="80" stroke="#163A2E" stroke-width="1.4" stroke-linecap="round"/>
+                            <line x1="65" y1="70" x2="77" y2="69" stroke="#163A2E" stroke-width="1.4" stroke-linecap="round"/>
+                            <line x1="65" y1="75" x2="77" y2="74" stroke="#E2B857" stroke-width="1.4" stroke-linecap="round"/>
+                            <line x1="65" y1="80" x2="78" y2="79" stroke="#163A2E" stroke-width="1.4" stroke-linecap="round"/>
+
+                            <!-- Цифра 30 внизу -->
+                            <text x="60" y="112" text-anchor="middle" fill="#E2B857" font-family="Manrope, sans-serif" font-weight="800" font-size="25" letter-spacing="0.5">30</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block font-heading font-extrabold text-forest text-lg sm:text-xl leading-tight tracking-tight">
+                            ГІМНАЗІЯ № 30
+                        </span>
+                        <span class="block text-xs text-slate-500 font-medium tracking-wide uppercase mt-0.5">
+                            ХМЕЛЬНИЦЬКИЙ
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Десктопне меню -->
+                <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-medium text-slate-700">
+                    <a href="#top" class="text-forest font-semibold hover:text-gold-dark transition">Головна</a>
+                    <a href="#parents" class="hover:text-forest transition">Батькам та учням</a>
+                    <a href="#team" class="hover:text-forest transition">Педагогічний колектив</a>
+                    <a href="#gallery" class="hover:text-forest transition">Фотогалерея</a>
+                    <a href="#news" class="hover:text-forest transition">Новини</a>
+                    <a href="#transparency" class="hover:text-forest transition inline-flex items-center gap-1">
+                        <span>Прозорість (ст. 30)</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                    </a>
+                    <button onclick="openDiaryModal()" class="inline-flex items-center gap-1.5 bg-forest hover:bg-forest-light text-white font-heading font-bold px-4 py-2 rounded-xl transition cursor-pointer shadow-sm">
+                        <i data-lucide="graduation-cap" class="w-4 h-4 text-gold"></i>
+                        <span>Е-щоденник</span>
+                    </button>
+                </nav>
+
+                <!-- Кнопка мобільного меню -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-forest hover:bg-forest-50 focus:outline-none transition" aria-label="Відкрити меню">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Випадаюче мобільне меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+            <a href="#top" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl bg-forest-50 text-forest font-semibold">Головна</a>
+            <a href="#parents" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium">Батькам та учням</a>
+            <a href="#team" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium">Педагогічний колектив</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium">Фотогалерея</a>
+            <a href="#news" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium">Новини та події</a>
+            <a href="#transparency" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium">Прозорість та відкритість (ст. 30)</a>
+            <a href="#contacts" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 font-medium">Контакти</a>
+            <button onclick="toggleMobileMenu(); openDiaryModal();" class="w-full mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-forest text-gold font-heading font-bold">
+                <i data-lucide="book-open-check" class="w-4 h-4"></i>
+                <span>Увійти в Електронний щоденник</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         3. ГОЛОВНИЙ БАНЕР (HERO SECTION)
+    ====================================================================== -->
+    <section id="top" class="hero-pattern relative overflow-hidden text-white">
+        <!-- Декоративне золоте світіння -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Ліва колонка: Текст та заклик до дії -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-gold/30 text-gold text-xs sm:text-sm font-medium">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        <span>Комунальний заклад загальної середньої освіти</span>
+                    </div>
+
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-[52px] leading-[1.15] tracking-tight text-white">
+                        Гімназія № 30 <br class="hidden sm:inline">
+                        <span class="text-gold">Хмельницької міської ради</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-white/85 max-w-2xl leading-relaxed">
+                        Простір безпечного розвитку, якісної освіти та сучасних можливостей для кожної дитини. Поєднуємо академічні традиції Поділля з інноваційними підходами до навчання.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-3 sm:gap-4">
+                        <button onclick="openDiaryModal()" class="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-forest font-heading font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-black/20 transition transform hover:-translate-y-0.5 cursor-pointer">
+                            <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                            <span>Електронний щоденник</span>
+                        </button>
+                        <a href="#parents" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/25 font-medium px-5 py-3.5 rounded-xl transition">
+                            <span>Для батьків</span>
+                            <i data-lucide="arrow-down-right" class="w-4 h-4 text-gold"></i>
+                        </a>
+                        <a href="#transparency" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/25 font-medium px-5 py-3.5 rounded-xl transition">
+                            <i data-lucide="file-text" class="w-4 h-4 text-gold"></i>
+                            <span>Прозорість (ст. 30)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Права колонка: Картка пріоритетів закладу -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <span class="font-heading font-bold text-lg text-gold">Наші ключові орієнтири</span>
+                            <span class="text-xs uppercase tracking-wider text-white/60">2026 / 2027 н.р.</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 text-gold">
+                                    <i data-lucide="shield" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-white text-base">Безпечне середовище та укриття</h3>
+                                    <p class="text-sm text-white/75 mt-1 leading-relaxed">Облаштоване укриття, контроль доступу, співпраця зі Службою освітньої безпеки та психологічний супровід.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 text-gold">
+                                    <i data-lucide="laptop" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-white text-base">Сучасні освітні технології</h3>
+                                    <p class="text-sm text-white/75 mt-1 leading-relaxed">Мультимедійні кабінети, STEM-лабораторії, цифрові інструменти навчання та поглиблене вивчення іноземних мов.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 text-gold">
+                                    <i data-lucide="users" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-white text-base">Підтримка та розвиток особистості</h3>
+                                    <p class="text-sm text-white/75 mt-1 leading-relaxed">Атмосфера взаємоповаги, партнерство між учителями, учнями та батьками, гуртки й спортивні секції.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         4. ПРО ГІМНАЗІЮ (КОРОТКІ ПОКАЗНИКИ)
+    ====================================================================== -->
+    <section id="about" class="py-12 bg-white border-b border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <div class="p-5 rounded-2xl bg-offwhite border border-slate-100 text-center sm:text-left">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-forest">1–9 класи</div>
+                    <div class="text-sm text-slate-600 mt-1 font-medium">Початкова та базова середня освіта (НУШ)</div>
+                </div>
+                <div class="p-5 rounded-2xl bg-offwhite border border-slate-100 text-center sm:text-left">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-forest">100%</div>
+                    <div class="text-sm text-slate-600 mt-1 font-medium">Забезпеченість місцями в облаштованому укритті</div>
+                </div>
+                <div class="p-5 rounded-2xl bg-offwhite border border-slate-100 text-center sm:text-left">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-forest">НАССР</div>
+                    <div class="text-sm text-slate-600 mt-1 font-medium">Сучасна система контролю якості шкільного харчування</div>
+                </div>
+                <div class="p-5 rounded-2xl bg-offwhite border border-slate-100 text-center sm:text-left">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-forest">Відкритість</div>
+                    <div class="text-sm text-slate-600 mt-1 font-medium">Публічна звітність та діалог з батьківською громадою</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         5. ШВИДКИЙ ДОСТУП ДЛЯ БАТЬКІВ ТА УЧНІВ (ІНТЕРАКТИВНІ ВКЛАДКИ)
+    ====================================================================== -->
+    <section id="parents" class="py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-gold-dark">Батькам та учням</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-forest mt-1">
+                    Швидкий доступ до важливої інформації
+                </h2>
+                <p class="text-slate-600 mt-2">
+                    Оберіть потрібний розділ, щоб переглянути актуальний розклад дзвінків, умови харчування, правила безпеки або перелік документів для вступу.
+                </p>
+            </div>
+
+            <!-- Кнопки-таби -->
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-8" role="tablist">
+                <button onclick="switchParentTab('bells')" id="tab-bells" class="parent-tab active flex items-center gap-3 p-4 rounded-2xl border text-left transition cursor-pointer bg-forest text-white border-forest shadow-md">
+                    <div class="w-10 h-10 rounded-xl bg-gold/20 text-gold flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="clock" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm sm:text-base">Розклад дзвінків</div>
+                        <div class="text-xs opacity-75 hidden sm:block">Уроки та перерви</div>
+                    </div>
+                </button>
+
+                <button onclick="switchParentTab('diary')" id="tab-diary" class="parent-tab flex items-center gap-3 p-4 rounded-2xl border text-left transition cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-forest/40">
+                    <div class="w-10 h-10 rounded-xl bg-forest-50 text-forest flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm sm:text-base">Е-щоденник</div>
+                        <div class="text-xs text-slate-500 hidden sm:block">Вхід та інструкція</div>
+                    </div>
+                </button>
+
+                <button onclick="switchParentTab('food')" id="tab-food" class="parent-tab flex items-center gap-3 p-4 rounded-2xl border text-left transition cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-forest/40">
+                    <div class="w-10 h-10 rounded-xl bg-forest-50 text-forest flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="utensils" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm sm:text-base">Харчування</div>
+                        <div class="text-xs text-slate-500 hidden sm:block">Організація та меню</div>
+                    </div>
+                </button>
+
+                <button onclick="switchParentTab('safety')" id="tab-safety" class="parent-tab flex items-center gap-3 p-4 rounded-2xl border text-left transition cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-forest/40">
+                    <div class="w-10 h-10 rounded-xl bg-forest-50 text-forest flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm sm:text-base">Безпека та укриття</div>
+                        <div class="text-xs text-slate-500 hidden sm:block">Дії під час тривоги</div>
+                    </div>
+                </button>
+
+                <button onclick="switchParentTab('admissions')" id="tab-admissions" class="parent-tab col-span-2 lg:col-span-1 flex items-center gap-3 p-4 rounded-2xl border text-left transition cursor-pointer bg-white text-slate-700 border-slate-200 hover:border-forest/40">
+                    <div class="w-10 h-10 rounded-xl bg-forest-50 text-forest flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="user-plus" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm sm:text-base">Правила прийому</div>
+                        <div class="text-xs text-slate-500 hidden sm:block">Зарахування до школи</div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Контент вкладок -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm">
+                
+                <!-- Вкладка 1: Розклад дзвінків -->
+                <div id="content-bells" class="parent-content">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 class="font-heading font-bold text-xl text-forest">Розклад дзвінків на 2026/2027 навчальний рік</h3>
+                            <p class="text-sm text-slate-500 mt-1">Початок занять — о 08:30. Просимо учнів приходити до закладу за 10–15 хвилин до початку першого уроку.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-gold-50 text-gold-dark border border-gold/40 px-3 py-1.5 rounded-full">
+                            <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                            <span>Тривалість уроку в 1 класі — 35 хв, у 2–4 класах — 40 хв, у 5–9 класах — 45 хв</span>
+                        </span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b-2 border-forest/15 text-xs uppercase tracking-wider text-slate-500 bg-offwhite">
+                                    <th class="py-3 px-4 rounded-tl-xl">№ уроку</th>
+                                    <th class="py-3 px-4">Час проведення</th>
+                                    <th class="py-3 px-4 rounded-tr-xl">Перерва після уроку</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-sm">
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">1 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">08:30 – 09:15</td>
+                                    <td class="py-3.5 px-4 text-slate-600">10 хвилин (ранкова руханка)</td>
+                                </tr>
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">2 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">09:25 – 10:10</td>
+                                    <td class="py-3.5 px-4 text-slate-600">20 хвилин (сніданок 1–4 класів)</td>
+                                </tr>
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">3 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">10:30 – 11:15</td>
+                                    <td class="py-3.5 px-4 text-slate-600">20 хвилин (обід 5–9 класів)</td>
+                                </tr>
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">4 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">11:35 – 12:20</td>
+                                    <td class="py-3.5 px-4 text-slate-600">15 хвилин</td>
+                                </tr>
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">5 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">12:35 – 13:20</td>
+                                    <td class="py-3.5 px-4 text-slate-600">10 хвилин</td>
+                                </tr>
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">6 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">13:30 – 14:15</td>
+                                    <td class="py-3.5 px-4 text-slate-600">10 хвилин</td>
+                                </tr>
+                                <tr class="hover:bg-forest-50/40 transition">
+                                    <td class="py-3.5 px-4 font-bold text-forest">7 урок</td>
+                                    <td class="py-3.5 px-4 font-medium">14:25 – 15:10</td>
+                                    <td class="py-3.5 px-4 text-slate-600">Завершення навчального дня</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Вкладка: Електронний щоденник та сервіси -->
+                <div id="content-diary" class="parent-content hidden space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div>
+                            <h3 class="font-heading font-bold text-xl text-forest">Електронний класний журнал та щоденник</h3>
+                            <p class="text-sm text-slate-500 mt-1">Оперативний доступ батьків та учнів до оцінок, домашніх завдань, відвідуваності та коментарів учителів.</p>
+                        </div>
+                        <button onclick="openDiaryModal()" class="inline-flex items-center gap-2 bg-forest hover:bg-forest-light text-white font-heading font-bold text-sm px-5 py-3 rounded-xl transition cursor-pointer shadow-sm">
+                            <i data-lucide="external-link" class="w-4 h-4 text-gold"></i>
+                            <span>Перейти до порталу Е-щоденника</span>
+                        </button>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="p-5 rounded-xl bg-offwhite border border-slate-200/80 space-y-2">
+                            <div class="w-8 h-8 rounded-lg bg-forest text-gold font-heading font-bold flex items-center justify-center text-sm">1</div>
+                            <h4 class="font-heading font-bold text-forest text-base">Отримання доступу</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Зверніться до класного керівника, щоб отримати індивідуальний код запрошення або первинний логін і пароль для батьківського чи учнівського кабінету.</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-offwhite border border-slate-200/80 space-y-2">
+                            <div class="w-8 h-8 rounded-lg bg-forest text-gold font-heading font-bold flex items-center justify-center text-sm">2</div>
+                            <h4 class="font-heading font-bold text-forest text-base">Вхід з телефону або ПК</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Авторизуйтеся через браузер або встановіть офіційний мобільний застосунок освітньої платформи на смартфон для миттєвих сповіщень.</p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-offwhite border border-slate-200/80 space-y-2">
+                            <div class="w-8 h-8 rounded-lg bg-forest text-gold font-heading font-bold flex items-center justify-center text-sm">3</div>
+                            <h4 class="font-heading font-bold text-forest text-base">Відновлення пароля</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Якщо ви втратили доступ або змінили номер телефону, скористайтеся функцією відновлення через email або напишіть класному керівнику.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вкладка 2: Харчування та меню -->
+                <div id="content-food" class="parent-content hidden space-y-5">
+                    <h3 class="font-heading font-bold text-xl text-forest">Організація шкільного харчування</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        У Гімназії № 30 впроваджено систему безпечності харчових продуктів <strong>НАССР</strong>. Харчування здійснюється за оновленим чотиритижневим сезонним меню, погодженим Держпродспоживслужбою, зі зменшеним вмістом солі та цукру і збільшеною кількістю овочів, фруктів та цільнозернових продуктів.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-offwhite border border-slate-200/70">
+                            <h4 class="font-heading font-bold text-forest text-base mb-1.5">Безкоштовне харчування</h4>
+                            <p class="text-sm text-slate-600">Забезпечується для учнів 1–4 класів (відповідно до державних та міських програм), а також для дітей пільгових категорій 5–9 класів за наявності підтвердних документів.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-offwhite border border-slate-200/70">
+                            <h4 class="font-heading font-bold text-forest text-base mb-1.5">Дієтичне харчування</h4>
+                            <p class="text-sm text-slate-600">За наявності медичної довідки форми № 086/о з рекомендаціями лікаря для дитини організовується індивідуальний безглютеновий або безлактозний раціон.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вкладка 3: Безпека та укриття -->
+                <div id="content-safety" class="parent-content hidden space-y-5">
+                    <h3 class="font-heading font-bold text-xl text-forest">Безпекове середовище та порядок дій під час тривоги</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Безпека учасників освітнього процесу — наш безумовний пріоритет. У закладі функціонує облаштоване найпростіше укриття, забезпечене питною водою, медикаментами, резервним освітленням, вентиляцією, санвузлами та Wi-Fi.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-forest-50/60 border border-forest/15">
+                            <div class="font-heading font-bold text-forest text-sm mb-1">1. Сигнал «Повітряна тривога»</div>
+                            <p class="text-xs sm:text-sm text-slate-600">Учителі організовано виводять класи за затвердженими маршрутами евакуації до укриття протягом 3–4 хвилин.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-forest-50/60 border border-forest/15">
+                            <div class="font-heading font-bold text-forest text-sm mb-1">2. Перебування в укритті</div>
+                            <p class="text-xs sm:text-sm text-slate-600">За можливості освітній процес продовжується в укритті. Вхід сторонніх осіб до укриття під час тривоги обмежений.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-forest-50/60 border border-forest/15">
+                            <div class="font-heading font-bold text-forest text-sm mb-1">3. Повернення до класів</div>
+                            <p class="text-xs sm:text-sm text-slate-600">Забирати дітей під час тривоги не рекомендовано. Повернення до навчання відбувається лише після сигналу «Відбій».</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Вкладка 4: Правила прийому -->
+                <div id="content-admissions" class="parent-content hidden space-y-5">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <h3 class="font-heading font-bold text-xl text-forest">Зарахування учнів до Гімназії № 30</h3>
+                        <button onclick="openContactModal('Запис на консультацію щодо вступу')" class="text-sm font-semibold bg-forest text-white hover:bg-forest-light px-4 py-2 rounded-xl transition cursor-pointer">
+                            Подати онлайн-запит на консультацію
+                        </button>
+                    </div>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Прийом заяв до 1-х класів здійснюється відповідно до Порядку зарахування, відрахування та переведення учнів до державних та комунальних закладів освіти, затвердженого наказом МОН України № 367.
+                    </p>
+                    <div class="bg-offwhite p-5 rounded-xl border border-slate-200/80 space-y-2 text-sm text-slate-700">
+                        <div class="font-heading font-bold text-forest mb-2">Необхідний пакет документів:</div>
+                        <ul class="list-disc list-inside space-y-1.5">
+                            <li>Заява одного з батьків або законних представників дитини (подається особисто або через портал <span class="font-medium">school.isuo.org</span>).</li>
+                            <li>Копія свідоцтва про народження дитини (під час подання пред'являється оригінал).</li>
+                            <li>Оригінал або копія медичної довідки за формою первинної облікової документації № 086/о.</li>
+                            <li>Документ, що підтверджує місце проживання дитини на території обслуговування гімназії (для першочергового зарахування).</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         5.1. ПЕДАГОГІЧНИЙ КОЛЕКТИВ (АДМІНІСТРАЦІЯ ТА ВЧИТЕЛІ)
+    ====================================================================== -->
+    <section id="team" class="py-16 sm:py-20 bg-white border-t border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gold-dark">Наша команда</span>
+                    <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-forest mt-1">
+                        Педагогічний колектив гімназії
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Досвідчені наставники, новатори та фахівці своєї справи, які щодня створюють атмосферу підтримки, довіри та пізнання.
+                    </p>
+                </div>
+
+                <div class="inline-flex items-center gap-2 text-xs text-slate-500 bg-offwhite border border-slate-200/80 px-3.5 py-2 rounded-xl self-start lg:self-end">
+                    <i data-lucide="table" class="w-4 h-4 text-gold-dark"></i>
+                    <span>Склад кафедр синхронізується з Google Таблицею закладу</span>
+                </div>
+            </div>
+
+            <!-- Фільтр кафедр / підрозділів -->
+            <div class="flex flex-wrap gap-2 mb-8">
+                <button onclick="setTeamCategory('all', this)" class="team-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-forest text-white transition cursor-pointer">Усі педагоги</button>
+                <button onclick="setTeamCategory('admin', this)" class="team-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-offwhite text-slate-700 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Адміністрація</button>
+                <button onclick="setTeamCategory('primary', this)" class="team-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-offwhite text-slate-700 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Початкова школа</button>
+                <button onclick="setTeamCategory('stem', this)" class="team-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-offwhite text-slate-700 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Природничо-математичний цикл</button>
+                <button onclick="setTeamCategory('humanities', this)" class="team-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-offwhite text-slate-700 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Гуманітарний цикл</button>
+            </div>
+
+            <!-- Сітка карток педагогів -->
+            <div id="team-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Картки генеруються через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         5.2. ЖИТТЯ ГІМНАЗІЇ: ФОТОГАЛЕРЕЯ З LIGHTBOX
+    ====================================================================== -->
+    <section id="gallery" class="py-16 sm:py-20 bg-offwhite border-t border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gold-dark">Освітній простір у кадрі</span>
+                    <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-forest mt-1">
+                        Життя гімназії: Фотогалерея
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Натисніть на будь-яку світлину, щоб відкрити повноекранний перегляд.
+                    </p>
+                </div>
+
+                <!-- Фільтри галереї -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="setGalleryCategory('all', this)" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-forest text-white transition cursor-pointer">Усі фото</button>
+                    <button onclick="setGalleryCategory('study', this)" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Навчальний процес</button>
+                    <button onclick="setGalleryCategory('safety', this)" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Безпека та простір</button>
+                    <button onclick="setGalleryCategory('events', this)" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Події та свята</button>
+                </div>
+            </div>
+
+            <!-- Адаптивна сітка фотографій -->
+            <div id="gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Фотографії генеруються через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         6. ОСТАННІ НОВИНИ ТА ПОДІЇ (З ДЕМО-РЕЖИМОМ ДОДАВАННЯ ЯК З GOOGLE ТАБЛИЦІ)
+    ====================================================================== -->
+    <section id="news" class="py-16 sm:py-20 bg-white border-y border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gold-dark">Життя гімназії</span>
+                    <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-forest mt-1">
+                        Останні новини та події
+                    </h2>
+                </div>
+
+                <!-- Кнопка демонстрації легкого адміністрування для директора -->
+                <button onclick="toggleAdminDemo()" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold bg-gold-50 hover:bg-gold/30 text-forest border border-gold px-4 py-2.5 rounded-xl transition cursor-pointer">
+                    <i data-lucide="plus-circle" class="w-4 h-4 text-gold-dark"></i>
+                    <span>+ Демо: Додати новину (як з Google Таблиці)</span>
+                </button>
+            </div>
+
+            <!-- Прихована панель швидкого додавання новини (демонстрація простоти ведення сайту) -->
+            <div id="admin-demo-panel" class="hidden mb-10 bg-forest-50 border-2 border-dashed border-forest/30 rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2 text-forest font-heading font-bold">
+                        <i data-lucide="table" class="w-5 h-5 text-gold-dark"></i>
+                        <span>Симулятор додавання рядка з Google Таблиці</span>
+                    </div>
+                    <button onclick="toggleAdminDemo()" class="text-slate-400 hover:text-slate-700 cursor-pointer">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 mb-4">
+                    На реальному сайті секретар або заступник просто вписує ці поля в Google Таблицю — і картка миттєво з'являється на сайті. Спробуйте додати тестову новину зараз:
+                </p>
+                <form onsubmit="addDemoNews(event)" class="grid sm:grid-cols-12 gap-4">
+                    <div class="sm:col-span-5">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Заголовок новини *</label>
+                        <input type="text" id="demo-news-title" required placeholder="Наприклад: Тиждень безпеки дорожнього руху" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-forest">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Рубрика</label>
+                        <select id="demo-news-category" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-forest">
+                            <option value="Освітній процес">Освітній процес</option>
+                            <option value="Безпека">Безпека</option>
+                            <option value="Досягнення учнів">Досягнення учнів</option>
+                            <option value="Оголошення">Оголошення</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Короткий опис *</label>
+                        <input type="text" id="demo-news-summary" required placeholder="Учні 5–7 класів взяли участь у практичному занятті..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-forest">
+                    </div>
+                    <div class="sm:col-span-12 flex justify-end">
+                        <button type="submit" class="bg-forest hover:bg-forest-light text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition cursor-pointer">
+                            Опублікувати на сторінці
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Сітка новин -->
+            <div id="news-grid" class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Картки новин генеруються через JS для підтримки інтерактивного перегляду та додавання -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         7. ПРОЗОРІСТЬ ТА ІНФОРМАЦІЙНА ВІДКРИТІСТЬ (СТ. 30 ЗАКОНУ «ПРО ОСВІТУ»)
+    ====================================================================== -->
+    <section id="transparency" class="py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gold-dark">Стаття 30 Закону України «Про освіту»</span>
+                    <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-forest mt-1">
+                        Прозорість та інформаційна відкритість
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Офіційні установчі документи, освітні програми, фінансова звітність та інформація про кадрові потреби гімназії у вільному доступі.
+                    </p>
+                </div>
+
+                <!-- Пошук по документах -->
+                <div class="w-full lg:w-80 relative">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="doc-search" oninput="filterDocuments()" placeholder="Пошук документа (напр. Статут, кошторис)..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:border-forest shadow-sm">
+                </div>
+            </div>
+
+            <!-- Фільтри категорій документів -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="setDocCategory('all')" class="doc-filter-btn active px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-forest text-white transition cursor-pointer">Усі документи</button>
+                <button onclick="setDocCategory('statute')" class="doc-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Установчі та освітні</button>
+                <button onclick="setDocCategory('finance')" class="doc-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Фінанси та кошторис</button>
+                <button onclick="setDocCategory('hr')" class="doc-filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:border-forest/40 transition cursor-pointer">Вакансії та територія</button>
+            </div>
+
+            <!-- Сітка документів -->
+            <div id="documents-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                <!-- Документи рендеряться через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         8. КОНТАКТИ ТА ПІДВАЛ САЙТУ (FOOTER)
+    ====================================================================== -->
+    <footer id="contacts" class="bg-forest text-white pt-16 pb-10 border-t-4 border-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Колонка 1: Герб та офіційна назва -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-16 flex-shrink-0">
+                            <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                                <path d="M12 16C38 8 82 8 108 16V68C108 102 82 122 60 132C38 122 12 102 12 68V16Z" fill="#0E261E" stroke="#E2B857" stroke-width="4.5"/>
+                                <path d="M47 26H73V41C73 49 66 54 60 57C54 54 47 49 47 41V26Z" fill="#163A2E" stroke="#E2B857" stroke-width="2"/>
+                                <line x1="60" y1="30" x2="60" y2="51" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M57.5 48L60 52L62.5 48" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                                <line x1="51" y1="49" x2="69" y2="31" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M65.5 31H69V34.5" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                                <line x1="69" y1="49" x2="51" y2="31" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M54.5 31H51V34.5" stroke="#E2B857" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M36 86C44 82 54 83 60 88C66 83 76 82 84 86L81 64C74 61 65 62 60 66C55 62 46 61 39 64L36 86Z" fill="#F8F9F5" stroke="#E2B857" stroke-width="2.5"/>
+                                <text x="60" y="112" text-anchor="middle" fill="#E2B857" font-family="Manrope, sans-serif" font-weight="800" font-size="25">30</text>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="font-heading font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                КЗЗСО «Гімназія № 30 <br>Хмельницької міської ради»
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed max-w-md">
+                        Сучасний освітній простір міста Хмельницького. Формуємо свідомих, освічених та впевнених у собі громадян України.
+                    </p>
+                </div>
+
+                <!-- Колонка 2: Швидкі посилання -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="font-heading font-bold text-gold text-sm uppercase tracking-wider">Навігація</h4>
+                    <ul class="space-y-2.5 text-sm text-white/80">
+                        <li><button onclick="openDiaryModal()" class="hover:text-gold transition cursor-pointer inline-flex items-center gap-1.5 font-semibold text-gold-light"><i data-lucide="book-open-check" class="w-4 h-4"></i><span>Електронний щоденник</span></button></li>
+                        <li><a href="#parents" class="hover:text-gold transition">Батькам та учням</a></li>
+                        <li><a href="#team" class="hover:text-gold transition">Педагогічний колектив</a></li>
+                        <li><a href="#gallery" class="hover:text-gold transition">Фотогалерея</a></li>
+                        <li><a href="#transparency" class="hover:text-gold transition">Прозорість (ст. 30)</a></li>
+                        <li><a href="#news" class="hover:text-gold transition">Новини та події</a></li>
+                        <li><button onclick="openContactModal()" class="hover:text-gold transition cursor-pointer">Електронне звернення громадян</button></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 3: Контактна інформація -->
+                <div class="lg:col-span-4 space-y-3">
+                    <h4 class="font-heading font-bold text-gold text-sm uppercase tracking-wider">Контакти</h4>
+                    <ul class="space-y-3 text-sm text-white/85">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gold flex-shrink-0 mt-1"></i>
+                            <span>29000, Хмельницька область, м. Хмельницький, мікрорайон Озерна</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <a href="tel:+380382703030" class="hover:text-gold transition">(0382) 70-30-30 (приймальня)</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <a href="mailto:gymnasium30@khm.ukr.education" class="hover:text-gold transition">gymnasium30@khm.ukr.education</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="clock" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <span>Пн–Пт: 08:00 – 17:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+                <div>© 2026 КЗЗСО «Гімназія № 30 Хмельницької міської ради». Усі права захищено.</div>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-gold transition inline-flex items-center gap-1.5">
+                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                        <span>Офіційна сторінка Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         МОДАЛЬНІ ВІКНА (ЗВОРОТНИЙ ЗВ'ЯЗОК, ЧИТАННЯ НОВИНИ, ПЕРЕГЛЯД ДОКУМЕНТА)
+    ====================================================================== -->
+
+    <!-- 0. Модальне вікно переходу до Електронного щоденника -->
+    <div id="diary-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/65 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+            <button onclick="closeDiaryModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3.5 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-forest text-gold flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gold-dark">Цифровий освітній простір</span>
+                    <h3 class="font-heading font-extrabold text-xl text-forest">Електронний щоденник</h3>
+                </div>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed mb-5">
+                Оберіть платформу електронного журналу та щоденника для входу в особистий кабінет учня, батьків або вчителя Гімназії № 30:
+            </p>
+
+            <div class="space-y-3 mb-6">
+                <a href="https://nz.ua/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl border-2 border-forest/20 bg-forest-50/60 hover:border-forest hover:bg-forest-50 transition group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-forest text-gold font-heading font-extrabold flex items-center justify-center text-sm">НЗ</div>
+                        <div>
+                            <div class="font-heading font-bold text-forest text-base group-hover:underline">Портал «Нові знання» (nz.ua)</div>
+                            <div class="text-xs text-slate-600">Основний електронний журнал та щоденник</div>
+                        </div>
+                    </div>
+                    <i data-lucide="external-link" class="w-5 h-5 text-forest"></i>
+                </a>
+
+                <a href="https://eschool-ua.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:border-forest/50 hover:bg-offwhite transition group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-gold-50 text-gold-dark border border-gold/40 font-heading font-extrabold flex items-center justify-center text-sm">ЄШ</div>
+                        <div>
+                            <div class="font-heading font-bold text-slate-800 text-base group-hover:text-forest">Платформа «Єдина школа»</div>
+                            <div class="text-xs text-slate-500">Веб-кабінет та мобільний сервіс</div>
+                        </div>
+                    </div>
+                    <i data-lucide="external-link" class="w-5 h-5 text-slate-400 group-hover:text-forest"></i>
+                </a>
+            </div>
+
+            <div class="bg-offwhite p-3.5 rounded-xl border border-slate-200/80 text-xs text-slate-600 flex items-start gap-2.5">
+                <i data-lucide="info" class="w-4 h-4 text-gold-dark flex-shrink-0 mt-0.5"></i>
+                <span>Не маєте логіна чи пароля? Зверніться до класного керівника або залиште запит через форму <button onclick="closeDiaryModal(); openContactModal('Відновлення доступу до Е-щоденника');" class="text-forest font-bold underline cursor-pointer">зворотного зв'язку</button>.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 0.1. Lightbox модальне вікно для Фотогалереї -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer" aria-label="Закрити">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <button onclick="navigateLightbox(-1)" class="absolute left-3 sm:left-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-gold hover:text-forest text-white flex items-center justify-center transition cursor-pointer" aria-label="Попереднє фото">
+            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+
+        <div class="max-w-4xl w-full flex flex-col items-center">
+            <div class="relative w-full rounded-2xl overflow-hidden bg-forest-dark shadow-2xl border border-white/10">
+                <img id="lightbox-img" src="" alt="" class="w-full max-h-[72vh] object-contain mx-auto bg-black/40">
+            </div>
+            <div class="mt-4 text-center text-white max-w-2xl px-4">
+                <span id="lightbox-cat" class="inline-block text-xs font-bold uppercase tracking-wider text-gold mb-1"></span>
+                <h4 id="lightbox-title" class="font-heading font-bold text-lg sm:text-xl"></h4>
+                <p id="lightbox-desc" class="text-xs sm:text-sm text-white/75 mt-1"></p>
+            </div>
+        </div>
+
+        <button onclick="navigateLightbox(1)" class="absolute right-3 sm:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-gold hover:text-forest text-white flex items-center justify-center transition cursor-pointer" aria-label="Наступне фото">
+            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+    </div>
+    
+    <!-- 1. Модальне вікно зворотного зв'язку -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+            <button onclick="closeContactModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-11 h-11 rounded-xl bg-forest-50 text-forest flex items-center justify-center mb-4">
+                <i data-lucide="message-square" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-heading font-bold text-xl text-forest">Зворотний зв'язок</h3>
+            <p class="text-sm text-slate-600 mt-1 mb-5">Маєте запитання щодо навчання, вступу чи організації безпеки? Напишіть нам — адміністрація надасть відповідь.</p>
+            
+            <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Ваше ім'я та прізвище *</label>
+                    <input type="text" required placeholder="Олена Ковальчук" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-forest">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Телефон або Email для відповіді *</label>
+                    <input type="text" required placeholder="+38 (0__) ___-__-__" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-forest">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Тема звернення</label>
+                    <input type="text" id="contact-subject" value="Загальне питання" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-forest">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Повідомлення *</label>
+                    <textarea rows="3" required placeholder="Опишіть ваше запитання або пропозицію..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-forest"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-forest hover:bg-forest-light text-white font-heading font-bold py-3 rounded-xl transition cursor-pointer">
+                    Надіслати повідомлення
+                </button>
+            </form>
+
+            <!-- Повідомлення про успішну відправку -->
+            <div id="contact-success" class="hidden text-center py-6 space-y-3">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+                    <i data-lucide="check" class="w-6 h-6"></i>
+                </div>
+                <h4 class="font-heading font-bold text-lg text-forest">Звернення прийнято!</h4>
+                <p class="text-sm text-slate-600">Дякуємо за ваше повідомлення. Секретар або заступник директора зв'яжеться з вами найближчим часом.</p>
+                <button onclick="closeContactModal()" class="mt-2 bg-offwhite hover:bg-slate-200 text-forest font-semibold text-sm px-5 py-2 rounded-xl transition cursor-pointer">
+                    Закрити
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Модальне вікно читання новини -->
+    <div id="news-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 relative max-h-[90vh] flex flex-col">
+            <button onclick="closeNewsModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 text-slate-700 hover:text-forest flex items-center justify-center shadow cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <img id="modal-news-img" src="" alt="" class="w-full h-56 sm:h-64 object-cover bg-forest-50">
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-4">
+                <div class="flex items-center gap-3 text-xs">
+                    <span id="modal-news-cat" class="px-2.5 py-1 rounded-full bg-gold-50 text-gold-dark font-semibold border border-gold/30"></span>
+                    <span id="modal-news-date" class="text-slate-400 font-medium"></span>
+                </div>
+                <h3 id="modal-news-title" class="font-heading font-extrabold text-xl sm:text-2xl text-forest leading-snug"></h3>
+                <p id="modal-news-body" class="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Модальне вікно перегляду документа (ст. 30) -->
+    <div id="doc-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+            <button onclick="closeDocModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-xl bg-forest-50 text-forest flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="file-check-2" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-gold-dark uppercase tracking-wider">Офіційний документ</span>
+                    <h3 id="modal-doc-title" class="font-heading font-bold text-lg text-forest leading-tight"></h3>
+                </div>
+            </div>
+            <p id="modal-doc-desc" class="text-sm text-slate-600 leading-relaxed mb-5"></p>
+            <div class="bg-offwhite p-4 rounded-xl border border-slate-200/80 text-xs text-slate-500 space-y-1 mb-6">
+                <div><strong>Заклад:</strong> КЗЗСО «Гімназія № 30 Хмельницької міської ради»</div>
+                <div><strong>Формат файлу:</strong> PDF (з електронним підписом / затверджена копія)</div>
+                <div id="modal-doc-meta"></div>
+            </div>
+            <div class="flex items-center justify-end gap-3">
+                <button onclick="closeDocModal()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition cursor-pointer">Закрити</button>
+                <button onclick="simulateDownload()" id="doc-download-btn" class="inline-flex items-center gap-2 bg-forest hover:bg-forest-light text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition cursor-pointer">
+                    <i data-lucide="download" class="w-4 h-4 text-gold"></i>
+                    <span>Завантажити PDF</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT ЛОГІКА (ІНТЕРАКТИВНІСТЬ, НОВИНИ, ПОШУК ДОКУМЕНТІВ)
+    ====================================================================== -->
+    <script>
+        // База даних новин (на реальному сайті ці дані підтягуються автоматично з Google Таблиці)
+        const newsData = [
+            {
+                id: 1,
+                title: "Оновлення фірмової символіки та візуального стилю Гімназії № 30",
+                category: "Життя закладу",
+                date: "12 листопада 2026",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+                summary: "Гімназія № 30 презентує оновлений герб у благородних смарагдово-золотих кольорах, що поєднує символи Хмельницького та прагнення до знань.",
+                fullText: "У межах модернізації освітнього простору педагогічна рада та учнівське самоврядування погодили оновлену візуальну айдентику Гімназії № 30.\n\nНовий герб виконаний у глибокому смарагдово-хвойному кольорі, що символізує спокій, розвиток і психологічний комфорт, та м'якому золоті — символі мудрості й високої якості освіти. Центральне місце на щиті посідають розгорнута книга, колоски та історичний символ нашого міста Хмельницького — три перехрещені стріли."
+            },
+            {
+                id: 2,
+                title: "Безпечне освітнє середовище: спільні тренування зі Службою освітньої безпеки",
+                category: "Безпека",
+                date: "08 листопада 2026",
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+                summary: "Для учнів 5–9 класів відбулися інтерактивні бесіди щодо правил безпечної поведінки у школі, в інтернеті та під час сигналу тривоги.",
+                fullText: "Створення захищеного та спокійного середовища для кожної дитини залишається головним пріоритетом роботи нашого закладу.\n\nСпільно з інспектором Служби освітньої безпеки для гімназистів проведено серію практичних занять. Учні повторили алгоритми швидкого та спокійного переходу до укриття, обговорили правила кібергігієни та протидії булінгу в учнівському колективі."
+            },
+            {
+                id: 3,
+                title: "Учні гімназії здобули призові місця на міському етапі предметних олімпіад",
+                category: "Досягнення учнів",
+                date: "03 листопада 2026",
+                image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80",
+                summary: "Вітаємо наших гімназистів та їхніх наставників із високими результатами з української мови, математики та інформатики.",
+                fullText: "Пишаємося наполегливістю та талантами наших учнів! За підсумками міського етапу Всеукраїнських учнівських олімпіад команда Гімназії № 30 виборола 7 призових місць.\n\nДякуємо вчителям за професійну підготовку, а батькам — за постійну підтримку та віру в успіх дітей. Бажаємо перемоги на обласному етапі!"
+            }
+        ];
+
+        // База офіційних документів згідно зі ст. 30 Закону України «Про освіту»
+        const documentsData = [
+            {
+                id: 1,
+                title: "Статут КЗЗСО «Гімназія № 30 Хмельницької міської ради»",
+                category: "statute",
+                categoryLabel: "Установчі документи",
+                date: "Затверджено рішенням сесії міської ради",
+                description: "Основний установчий документ закладу освіти, що визначає правовий статус, структуру управління, права та обов'язки учасників освітнього процесу."
+            },
+            {
+                id: 2,
+                title: "Ліцензія на провадження освітньої діяльності",
+                category: "statute",
+                categoryLabel: "Установчі документи",
+                date: "Чинна (безстрокова)",
+                description: "Витяг з розпорядження обласної державної адміністрації про надання ліцензії на провадження освітньої діяльності у сфері повної загальної середньої освіти."
+            },
+            {
+                id: 3,
+                title: "Освітня програма гімназії на 2026/2027 навчальний рік",
+                category: "statute",
+                categoryLabel: "Освітній процес",
+                date: "Схвалено педагогічною радою",
+                description: "Комплекс освітніх компонентів, спланованих і організованих закладом освіти для досягнення учнями результатів навчання відповідно до державних стандартів НУШ."
+            },
+            {
+                id: 4,
+                title: "Кошторис та звіт про використання бюджетних коштів",
+                category: "finance",
+                categoryLabel: "Фінансова звітність",
+                date: "Оновлено: листопад 2026",
+                description: "Інформація про обсяги бюджетного фінансування, надходження та використання коштів загального і спеціального фондів закладу."
+            },
+            {
+                id: 5,
+                title: "Закріплена територія обслуговування гімназії",
+                category: "hr",
+                categoryLabel: "Для вступників",
+                date: "Рішення виконавчого комітету",
+                description: "Перелік вулиць та будинків мікрорайону Озерна м. Хмельницького, закріплених за КЗЗСО «Гімназія № 30» для першочергового зарахування дітей."
+            },
+            {
+                id: 6,
+                title: "Інформація про наявні вакансії у закладі",
+                category: "hr",
+                categoryLabel: "Кадрові питання",
+                date: "Актуально на 13.11.2026",
+                description: "Відкриті вакансії технічного та обслуговуючого персоналу: комірник, прибиральник службових приміщень, підсобний працівник. Офіційне працевлаштування."
+            }
+        ];
+
+        let currentDocCategory = 'all';
+        let currentTeamCategory = 'all';
+        let currentGalleryCategory = 'all';
+        let currentLightboxIndex = 0;
+
+        // База даних педагогічного колективу (може синхронізуватися з Google Таблицею)
+        const teamData = [
+            {
+                id: 1,
+                name: "Маковський Денис Олексійович",
+                role: "Директор гімназії",
+                category: "admin",
+                categoryLabel: "Адміністрація",
+                qualification: "Доктор філософії (PhD), спеціаліст вищої категорії",
+                credo: "Сучасна школа — це простір довіри, безпеки та розкриття потенціалу кожної дитини.",
+                initials: "МД",
+                featured: true
+            },
+            {
+                id: 2,
+                name: "Ковальчук Ірина Петрівна",
+                role: "Заступник директора з навчально-виховної роботи",
+                category: "admin",
+                categoryLabel: "Адміністрація",
+                qualification: "Спеціаліст вищої категорії, учитель-методист",
+                credo: "Якісна освіта починається з партнерства вчителя, учня та родини.",
+                initials: "КІ",
+                featured: false
+            },
+            {
+                id: 3,
+                name: "Мельник Оксана Василівна",
+                role: "Заступник директора з виховної роботи",
+                category: "admin",
+                categoryLabel: "Адміністрація",
+                qualification: "Спеціаліст вищої категорії, старший учитель",
+                credo: "Виховуємо свідомих громадян України через повагу, творчість та власний приклад.",
+                initials: "МО",
+                featured: false
+            },
+            {
+                id: 4,
+                name: "Бондаренко Наталія Сергіївна",
+                role: "Голова методичного об'єднання вчителів початкових класів",
+                category: "primary",
+                categoryLabel: "Початкова школа",
+                qualification: "Спеціаліст вищої категорії, учитель-методист НУШ",
+                credo: "Навчати з любов'ю, підтримувати допитливість і радість кожного відкриття.",
+                initials: "БН",
+                featured: false
+            },
+            {
+                id: 5,
+                name: "Ткачук Андрій Миколайович",
+                role: "Учитель математики та інформатики, керівник STEM-гуртка",
+                category: "stem",
+                categoryLabel: "Природничо-математичний цикл",
+                qualification: "Спеціаліст вищої категорії",
+                credo: "Математика і технології вчать мислити логічно, сміливо та знаходити рішення в будь-якій ситуації.",
+                initials: "ТА",
+                featured: false
+            },
+            {
+                id: 6,
+                name: "Савчук Олена Володимирівна",
+                role: "Учитель української мови та літератури",
+                category: "humanities",
+                categoryLabel: "Гуманітарний цикл",
+                qualification: "Спеціаліст вищої категорії, старший учитель",
+                credo: "Слово формує особистість, а рідна мова єднає покоління.",
+                initials: "СО",
+                featured: false
+            }
+        ];
+
+        // База даних фотогалереї
+        const galleryData = [
+            {
+                id: 1,
+                title: "Сучасні навчальні кабінети НУШ",
+                category: "study",
+                categoryLabel: "Навчальний процес",
+                image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80",
+                description: "Світлі, комфортні класи з мультимедійним обладнанням та ергономічними меблями для учнів."
+            },
+            {
+                id: 2,
+                title: "STEM-лабораторія та уроки інформатики",
+                category: "study",
+                categoryLabel: "Навчальний процес",
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
+                description: "Практичні заняття з програмування, робототехніки та природничих наук."
+            },
+            {
+                id: 3,
+                title: "Облаштоване безпечне укриття закладу",
+                category: "safety",
+                categoryLabel: "Безпека та простір",
+                image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80",
+                description: "Укриття забезпечене вентиляцією, місцями для сидіння, запасом питної води, освітленням та доступом до інтернету."
+            },
+            {
+                id: 4,
+                title: "Шкільна бібліотека та читальний простір",
+                category: "safety",
+                categoryLabel: "Безпека та простір",
+                image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=80",
+                description: "Оновлений фонд художньої та навчальної літератури, зона для тихого читання та проєктної роботи."
+            },
+            {
+                id: 5,
+                title: "Свято першого дзвоника та посвята у гімназисти",
+                category: "events",
+                categoryLabel: "Події та свята",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80",
+                description: "Урочисті та теплі шкільні традиції, які об'єднують учнів, учителів і батьківську громаду."
+            },
+            {
+                id: 6,
+                title: "Спортивні змагання та олімпійський тиждень",
+                category: "events",
+                categoryLabel: "Події та свята",
+                image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=900&q=80",
+                description: "Командний дух, здоровий спосіб життя та активне дозвілля наших гімназистів."
+            }
+        ];
+
+        // Рендер карток педагогічного колективу
+        function renderTeam() {
+            const grid = document.getElementById('team-grid');
+            const filtered = currentTeamCategory === 'all'
+                ? teamData
+                : teamData.filter(member => member.category === currentTeamCategory);
+
+            grid.innerHTML = filtered.map(member => `
+                <div class="rounded-2xl p-6 border ${member.featured ? 'bg-forest text-white border-forest shadow-lg' : 'bg-offwhite text-slate-800 border-slate-200/90 hover:border-forest/40'} transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-2xl ${member.featured ? 'bg-gold text-forest' : 'bg-forest text-gold'} font-heading font-extrabold text-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                ${member.initials}
+                            </div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${member.featured ? 'bg-white/15 text-gold border border-gold/30' : 'bg-white text-forest border border-slate-200'}">
+                                ${member.categoryLabel}
+                            </span>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg ${member.featured ? 'text-white' : 'text-forest'} leading-snug">
+                            ${member.name}
+                        </h3>
+                        <div class="text-sm font-semibold ${member.featured ? 'text-gold' : 'text-gold-dark'} mt-1">
+                            ${member.role}
+                        </div>
+                        <div class="text-xs ${member.featured ? 'text-white/75' : 'text-slate-500'} mt-1.5">
+                            ${member.qualification}
+                        </div>
+                    </div>
+                    <div class="mt-5 pt-4 border-t ${member.featured ? 'border-white/15 text-white/85' : 'border-slate-200/80 text-slate-600'} text-xs italic leading-relaxed">
+                        «${member.credo}»
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setTeamCategory(cat, btnEl) {
+            currentTeamCategory = cat;
+            document.querySelectorAll('.team-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-forest', 'text-white', 'font-semibold');
+                btn.classList.add('bg-offwhite', 'text-slate-700', 'border', 'border-slate-200', 'font-medium');
+            });
+            btnEl.classList.remove('bg-offwhite', 'text-slate-700', 'border', 'border-slate-200', 'font-medium');
+            btnEl.classList.add('bg-forest', 'text-white', 'font-semibold');
+            renderTeam();
+        }
+
+        // Рендер фотогалереї
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            const filtered = currentGalleryCategory === 'all'
+                ? galleryData
+                : galleryData.filter(item => item.category === currentGalleryCategory);
+
+            grid.innerHTML = filtered.map((item, idx) => `
+                <div onclick="openLightbox(${item.id})" class="group relative rounded-2xl overflow-hidden bg-forest-dark aspect-[4/3] cursor-pointer shadow-sm hover:shadow-xl transition duration-300 border border-slate-200/80">
+                    <img src="${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/800x600/163A2E/E2B857?text=Гімназія+№+30'" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent opacity-90 group-hover:opacity-100 transition"></div>
+                    <span class="absolute top-3.5 left-3.5 bg-forest/90 backdrop-blur-sm text-gold text-xs font-semibold px-3 py-1 rounded-full border border-gold/30">
+                        ${item.categoryLabel}
+                    </span>
+                    <div class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-white/15 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                        <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                    </div>
+                    <div class="absolute bottom-0 inset-x-0 p-5 text-white">
+                        <h3 class="font-heading font-bold text-base sm:text-lg leading-snug group-hover:text-gold transition">
+                            ${item.title}
+                        </h3>
+                        <p class="text-xs text-white/80 line-clamp-1 mt-1">
+                            ${item.description}
+                        </p>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function setGalleryCategory(cat, btnEl) {
+            currentGalleryCategory = cat;
+            document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-forest', 'text-white', 'font-semibold');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'font-medium');
+            });
+            btnEl.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'font-medium');
+            btnEl.classList.add('bg-forest', 'text-white', 'font-semibold');
+            renderGallery();
+        }
+
+        // Lightbox керування
+        function openLightbox(id) {
+            const index = galleryData.findIndex(item => item.id === id);
+            if (index === -1) return;
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function updateLightboxContent() {
+            const item = galleryData[currentLightboxIndex];
+            document.getElementById('lightbox-img').src = item.image;
+            document.getElementById('lightbox-cat').textContent = item.categoryLabel;
+            document.getElementById('lightbox-title').textContent = item.title;
+            document.getElementById('lightbox-desc').textContent = item.description;
+        }
+
+        function navigateLightbox(direction) {
+            currentLightboxIndex = (currentLightboxIndex + direction + galleryData.length) % galleryData.length;
+            updateLightboxContent();
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Модальне вікно Електронного щоденника
+        function openDiaryModal() {
+            const modal = document.getElementById('diary-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeDiaryModal() {
+            const modal = document.getElementById('diary-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Закриття модальних вікон клавішею Escape та навігація стрілками у фотогалереї
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDiaryModal();
+                closeLightbox();
+                closeContactModal();
+                closeNewsModal();
+                closeDocModal();
+            }
+            const lightboxOpen = !document.getElementById('lightbox-modal').classList.contains('hidden');
+            if (lightboxOpen && e.key === 'ArrowRight') navigateLightbox(1);
+            if (lightboxOpen && e.key === 'ArrowLeft') navigateLightbox(-1);
+        });
+
+        // Рендер карток новин
+        function renderNews() {
+            const grid = document.getElementById('news-grid');
+            grid.innerHTML = newsData.map(item => `
+                <article class="bg-offwhite rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col hover:shadow-lg hover:border-forest/30 transition duration-300 group">
+                    <div class="relative h-48 overflow-hidden bg-forest-50">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/800x500/163A2E/E2B857?text=Гімназія+№+30'" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-forest/90 backdrop-blur-sm text-gold text-xs font-semibold px-3 py-1 rounded-full">
+                            ${item.category}
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="text-xs text-slate-400 font-medium mb-2 flex items-center gap-1.5">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 text-gold-dark"></i>
+                            <span>${item.date}</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-forest leading-snug mb-2.5 group-hover:text-forest-light transition">
+                            ${item.title}
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5 flex-1">
+                            ${item.summary}
+                        </p>
+                        <button onclick="openNewsModal(${item.id})" class="inline-flex items-center gap-1.5 text-sm font-bold text-forest hover:text-gold-dark transition self-start cursor-pointer">
+                            <span>Читати далі</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // Рендер документів (ст. 30)
+        function renderDocuments() {
+            const searchQuery = document.getElementById('doc-search').value.toLowerCase().trim();
+            const grid = document.getElementById('documents-grid');
+
+            const filtered = documentsData.filter(doc => {
+                const matchesCat = currentDocCategory === 'all' || doc.category === currentDocCategory;
+                const matchesSearch = doc.title.toLowerCase().includes(searchQuery) || doc.description.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-10 bg-white rounded-2xl border border-slate-200 text-slate-500 text-sm">
+                        За вашим запитом документів не знайдено. Спробуйте змінити ключове слово.
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(doc => `
+                <div onclick="openDocModal(${doc.id})" class="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-forest hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-forest-50 text-forest">
+                                ${doc.categoryLabel}
+                            </span>
+                            <i data-lucide="file-text" class="w-4 h-4 text-slate-400 group-hover:text-gold-dark transition"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-base text-slate-800 group-hover:text-forest transition leading-snug mb-2">
+                            ${doc.title}
+                        </h3>
+                        <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                            ${doc.description}
+                        </p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                        <span>${doc.date}</span>
+                        <span class="font-semibold text-forest group-hover:underline">Відкрити →</span>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // Перемикання вкладок у блоці "Батькам та учням"
+        function switchParentTab(tabName) {
+            document.querySelectorAll('.parent-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+
+            document.querySelectorAll('.parent-tab').forEach(btn => {
+                btn.classList.remove('bg-forest', 'text-white', 'border-forest', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+                const iconBox = btn.querySelector('div:first-child');
+                iconBox.classList.remove('bg-gold/20', 'text-gold');
+                iconBox.classList.add('bg-forest-50', 'text-forest');
+            });
+
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+            activeBtn.classList.add('bg-forest', 'text-white', 'border-forest', 'shadow-md');
+            const activeIcon = activeBtn.querySelector('div:first-child');
+            activeIcon.classList.remove('bg-forest-50', 'text-forest');
+            activeIcon.classList.add('bg-gold/20', 'text-gold');
+        }
+
+        // Фільтрація документів
+        function setDocCategory(cat) {
+            currentDocCategory = cat;
+            document.querySelectorAll('.doc-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-forest', 'text-white', 'font-semibold');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'font-medium');
+            });
+            event.target.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'font-medium');
+            event.target.classList.add('bg-forest', 'text-white', 'font-semibold');
+            renderDocuments();
+        }
+
+        function filterDocuments() {
+            renderDocuments();
+        }
+
+        // Демо-панель додавання новин (симуляція Google Таблиці)
+        function toggleAdminDemo() {
+            const panel = document.getElementById('admin-demo-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function addDemoNews(e) {
+            e.preventDefault();
+            const title = document.getElementById('demo-news-title').value.trim();
+            const category = document.getElementById('demo-news-category').value;
+            const summary = document.getElementById('demo-news-summary').value.trim();
+
+            const newEntry = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                date: "13 листопада 2026 (Щойно додано)",
+                image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80",
+                summary: summary,
+                fullText: summary + "\n\nЦю новину додано через демонстраційну форму. На робочому сайті цей блок автоматично зчитує нові рядки з вашої шкільної Google Таблиці."
+            };
+
+            newsData.unshift(newEntry);
+            renderNews();
+            e.target.reset();
+            toggleAdminDemo();
+        }
+
+        // Мобільне меню
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Модальне вікно зворотного зв'язку
+        function openContactModal(subject = 'Загальне питання') {
+            document.getElementById('contact-subject').value = subject;
+            document.getElementById('contact-form').classList.remove('hidden');
+            document.getElementById('contact-success').classList.add('hidden');
+            const modal = document.getElementById('contact-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitContactForm(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('contact-success').classList.remove('hidden');
+            e.target.reset();
+        }
+
+        // Модальне вікно новини
+        function openNewsModal(id) {
+            const item = newsData.find(n => n.id === id);
+            if (!item) return;
+            document.getElementById('modal-news-img').src = item.image;
+            document.getElementById('modal-news-cat').textContent = item.category;
+            document.getElementById('modal-news-date').textContent = item.date;
+            document.getElementById('modal-news-title').textContent = item.title;
+            document.getElementById('modal-news-body').textContent = item.fullText;
+            const modal = document.getElementById('news-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeNewsModal() {
+            const modal = document.getElementById('news-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Модальне вікно документа
+        function openDocModal(id) {
+            const doc = documentsData.find(d => d.id === id);
+            if (!doc) return;
+            document.getElementById('modal-doc-title').textContent = doc.title;
+            document.getElementById('modal-doc-desc').textContent = doc.description;
+            document.getElementById('modal-doc-meta').innerHTML = `<strong>Статус:</strong> ${doc.date}`;
+            
+            const btn = document.getElementById('doc-download-btn');
+            btn.innerHTML = `<i data-lucide="download" class="w-4 h-4 text-gold"></i><span>Завантажити PDF</span>`;
+            
+            const modal = document.getElementById('doc-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeDocModal() {
+            const modal = document.getElementById('doc-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function simulateDownload() {
+            const btn = document.getElementById('doc-download-btn');
+            btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-gold"></i><span>Файл підготовлено (Демо)</span>`;
+            lucide.createIcons();
+        }
+
+        // Ініціалізація при завантаженні сторінки
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTeam();
+            renderGallery();
+            renderNews();
+            renderDocuments();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
